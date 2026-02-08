@@ -1,0 +1,1904 @@
+[
+  {
+    "id": 1,
+    "name": "Toit",
+    "city": "Bangalore",
+    "area": "Indiranagar",
+    "cuisine": [
+      "Continental",
+      "Pub Food"
+    ],
+    "capacity": 80,
+    "price_range": "₹₹",
+    "rating": 4.4,
+    "features": [
+      "Rooftop",
+      "Craft Beer",
+      "Live Music"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 750
+  },
+  {
+    "id": 2,
+    "name": "Karavalli",
+    "city": "Bangalore",
+    "area": "UB City",
+    "cuisine": [
+      "Coastal",
+      "South Indian"
+    ],
+    "capacity": 60,
+    "price_range": "₹₹₹",
+    "rating": 4.6,
+    "features": [
+      "Fine Dining",
+      "Authentic Decor"
+    ],
+    "opening_hours": "12:30-23:00",
+    "price_per_person": 1600
+  },
+  {
+    "id": 3,
+    "name": "Truffles",
+    "city": "Bangalore",
+    "area": "Koramangala",
+    "cuisine": [
+      "American",
+      "Continental"
+    ],
+    "capacity": 70,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Casual Dining",
+      "Burgers"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 850
+  },
+  {
+    "id": 4,
+    "name": "Koshy's",
+    "city": "Bangalore",
+    "area": "MG Road",
+    "cuisine": [
+      "Continental",
+      "Indian"
+    ],
+    "capacity": 50,
+    "price_range": "₹",
+    "rating": 4.2,
+    "features": [
+      "Heritage",
+      "Family Friendly"
+    ],
+    "opening_hours": "08:30-23:00",
+    "price_per_person": 250
+  },
+  {
+    "id": 5,
+    "name": "Vidyarthi Bhavan",
+    "city": "Bangalore",
+    "area": "Basavanagudi",
+    "cuisine": [
+      "South Indian"
+    ],
+    "capacity": 40,
+    "price_range": "₹",
+    "rating": 4.5,
+    "features": [
+      "Iconic",
+      "Vegetarian",
+      "Breakfast"
+    ],
+    "opening_hours": "06:30-11:00, 14:30-20:30",
+    "price_per_person": 350
+  },
+  {
+    "id": 6,
+    "name": "Barbeque Nation",
+    "city": "Bangalore",
+    "area": "HSR Layout",
+    "cuisine": [
+      "Barbecue",
+      "Multi-cuisine"
+    ],
+    "capacity": 100,
+    "price_range": "₹₹",
+    "rating": 4.1,
+    "features": [
+      "Buffet",
+      "Family Friendly"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 1200
+  },
+  {
+    "id": 7,
+    "name": "The Black Pearl",
+    "city": "Bangalore",
+    "area": "Koramangala",
+    "cuisine": [
+      "Continental",
+      "Asian"
+    ],
+    "capacity": 65,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Rooftop",
+      "Bar"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 950
+  },
+  {
+    "id": 8,
+    "name": "MTR",
+    "city": "Bangalore",
+    "area": "Lalbagh",
+    "cuisine": [
+      "South Indian"
+    ],
+    "capacity": 50,
+    "price_range": "₹",
+    "rating": 4.4,
+    "features": [
+      "Heritage",
+      "Vegetarian",
+      "Breakfast"
+    ],
+    "opening_hours": "06:30-11:00, 12:30-14:30, 19:00-21:00",
+    "price_per_person": 250
+  },
+  {
+    "id": 9,
+    "name": "Empire Restaurant",
+    "city": "Bangalore",
+    "area": "Multiple Locations",
+    "cuisine": [
+      "North Indian",
+      "Chinese"
+    ],
+    "capacity": 85,
+    "price_range": "₹₹",
+    "rating": 4.0,
+    "features": [
+      "Family Friendly",
+      "Late Night"
+    ],
+    "opening_hours": "11:00-23:30",
+    "price_per_person": 1050
+  },
+  {
+    "id": 10,
+    "name": "Farzi Cafe",
+    "city": "Bangalore",
+    "area": "UB City",
+    "cuisine": [
+      "Modern Indian",
+      "Continental"
+    ],
+    "capacity": 75,
+    "price_range": "₹₹₹",
+    "rating": 4.4,
+    "features": [
+      "Molecular Gastronomy",
+      "Bar"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 2650
+  },
+  {
+    "id": 11,
+    "name": "Smoke House Deli",
+    "city": "Bangalore",
+    "area": "Indiranagar",
+    "cuisine": [
+      "European",
+      "Continental"
+    ],
+    "capacity": 60,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "All-Day Dining",
+      "Bakery"
+    ],
+    "opening_hours": "09:00-23:00",
+    "price_per_person": 1050
+  },
+  {
+    "id": 12,
+    "name": "Windmills Craftworks",
+    "city": "Bangalore",
+    "area": "Whitefield",
+    "cuisine": [
+      "Continental",
+      "Asian"
+    ],
+    "capacity": 90,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Jazz Bar",
+      "Microbrewery",
+      "Live Music"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 1100
+  },
+  {
+    "id": 13,
+    "name": "Olive Beach",
+    "city": "Bangalore",
+    "area": "Ulsoor",
+    "cuisine": [
+      "Mediterranean",
+      "Italian"
+    ],
+    "capacity": 55,
+    "price_range": "₹₹₹",
+    "rating": 4.5,
+    "features": [
+      "Lakeside",
+      "Fine Dining"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 2050
+  },
+  {
+    "id": 14,
+    "name": "Nagarjuna",
+    "city": "Bangalore",
+    "area": "Residency Road",
+    "cuisine": [
+      "Andhra",
+      "South Indian"
+    ],
+    "capacity": 70,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Spicy Food",
+      "Family Friendly"
+    ],
+    "opening_hours": "11:30-22:30",
+    "price_per_person": 700
+  },
+  {
+    "id": 15,
+    "name": "The Reservoire",
+    "city": "Bangalore",
+    "area": "Indiranagar",
+    "cuisine": [
+      "Continental",
+      "Asian"
+    ],
+    "capacity": 65,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Rooftop",
+      "Bar",
+      "Outdoor Seating"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 800
+  },
+  {
+    "id": 16,
+    "name": "Punjab Grill",
+    "city": "Bangalore",
+    "area": "UB City",
+    "cuisine": [
+      "North Indian",
+      "Punjabi"
+    ],
+    "capacity": 70,
+    "price_range": "₹₹₹",
+    "rating": 4.4,
+    "features": [
+      "Fine Dining",
+      "Bar"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 2250
+  },
+  {
+    "id": 17,
+    "name": "Corner House Ice Cream",
+    "city": "Bangalore",
+    "area": "Jayanagar",
+    "cuisine": [
+      "Desserts",
+      "Ice Cream"
+    ],
+    "capacity": 35,
+    "price_range": "₹",
+    "rating": 4.6,
+    "features": [
+      "Iconic",
+      "Family Friendly"
+    ],
+    "opening_hours": "11:00-23:00",
+    "price_per_person": 350
+  },
+  {
+    "id": 18,
+    "name": "Fatty Bao",
+    "city": "Bangalore",
+    "area": "UB City",
+    "cuisine": [
+      "Asian",
+      "Oriental"
+    ],
+    "capacity": 55,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Modern Asian",
+      "Bar"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 800
+  },
+  {
+    "id": 19,
+    "name": "AB's - Absolute Barbecues",
+    "city": "Bangalore",
+    "area": "JP Nagar",
+    "cuisine": [
+      "Barbecue",
+      "Multi-cuisine"
+    ],
+    "capacity": 95,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Buffet",
+      "Family Friendly"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 650
+  },
+  {
+    "id": 20,
+    "name": "Cafe Thulp",
+    "city": "Bangalore",
+    "area": "Koramangala",
+    "cuisine": [
+      "Cafe",
+      "Continental"
+    ],
+    "capacity": 45,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Quirky Decor",
+      "Instagram-worthy"
+    ],
+    "opening_hours": "11:00-23:00",
+    "price_per_person": 750
+  },
+  {
+    "id": 21,
+    "name": "Britannia & Co.",
+    "city": "Mumbai",
+    "area": "Ballard Estate",
+    "cuisine": [
+      "Parsi",
+      "Iranian"
+    ],
+    "capacity": 40,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Heritage",
+      "Iconic"
+    ],
+    "opening_hours": "11:30-16:00",
+    "price_per_person": 750
+  },
+  {
+    "id": 22,
+    "name": "Trishna",
+    "city": "Mumbai",
+    "area": "Fort",
+    "cuisine": [
+      "Coastal",
+      "Seafood"
+    ],
+    "capacity": 50,
+    "price_range": "₹₹₹",
+    "rating": 4.5,
+    "features": [
+      "Fine Dining",
+      "Celebrity Favorite"
+    ],
+    "opening_hours": "12:00-15:30, 19:00-23:30",
+    "price_per_person": 1800
+  },
+  {
+    "id": 23,
+    "name": "Leopold Cafe",
+    "city": "Mumbai",
+    "area": "Colaba",
+    "cuisine": [
+      "Continental",
+      "Indian"
+    ],
+    "capacity": 80,
+    "price_range": "₹₹",
+    "rating": 4.1,
+    "features": [
+      "Heritage",
+      "Tourist Favorite"
+    ],
+    "opening_hours": "08:00-00:00",
+    "price_per_person": 900
+  },
+  {
+    "id": 24,
+    "name": "The Bombay Canteen",
+    "city": "Mumbai",
+    "area": "Lower Parel",
+    "cuisine": [
+      "Regional Indian",
+      "Modern Indian"
+    ],
+    "capacity": 70,
+    "price_range": "₹₹₹",
+    "rating": 4.6,
+    "features": [
+      "Contemporary",
+      "Bar"
+    ],
+    "opening_hours": "12:00-16:00, 18:30-00:30",
+    "price_per_person": 2950
+  },
+  {
+    "id": 25,
+    "name": "Bademiya",
+    "city": "Mumbai",
+    "area": "Colaba",
+    "cuisine": [
+      "Mughlai",
+      "Kebabs"
+    ],
+    "capacity": 35,
+    "price_range": "₹",
+    "rating": 4.2,
+    "features": [
+      "Street Food",
+      "Late Night",
+      "Iconic"
+    ],
+    "opening_hours": "17:00-04:00",
+    "price_per_person": 300
+  },
+  {
+    "id": 26,
+    "name": "Gajalee",
+    "city": "Mumbai",
+    "area": "Vile Parle",
+    "cuisine": [
+      "Coastal",
+      "Seafood",
+      "Malvani"
+    ],
+    "capacity": 65,
+    "price_range": "₹₹",
+    "rating": 4.4,
+    "features": [
+      "Family Friendly",
+      "Authentic"
+    ],
+    "opening_hours": "11:30-15:30, 19:00-23:00",
+    "price_per_person": 800
+  },
+  {
+    "id": 27,
+    "name": "Wasabi by Morimoto",
+    "city": "Mumbai",
+    "area": "Taj Mahal Palace, Colaba",
+    "cuisine": [
+      "Japanese",
+      "Asian"
+    ],
+    "capacity": 45,
+    "price_range": "₹₹₹",
+    "rating": 4.7,
+    "features": [
+      "Fine Dining",
+      "Celebrity Chef"
+    ],
+    "opening_hours": "12:30-14:45, 19:00-23:45",
+    "price_per_person": 2850
+  },
+  {
+    "id": 28,
+    "name": "Cafe Madras",
+    "city": "Mumbai",
+    "area": "Matunga",
+    "cuisine": [
+      "South Indian"
+    ],
+    "capacity": 50,
+    "price_range": "₹",
+    "rating": 4.3,
+    "features": [
+      "Vegetarian",
+      "Authentic",
+      "Budget-Friendly"
+    ],
+    "opening_hours": "07:00-22:30",
+    "price_per_person": 250
+  },
+  {
+    "id": 29,
+    "name": "Bastian",
+    "city": "Mumbai",
+    "area": "Linking Road, Bandra",
+    "cuisine": [
+      "Seafood",
+      "European"
+    ],
+    "capacity": 75,
+    "price_range": "₹₹₹",
+    "rating": 4.5,
+    "features": [
+      "Trendy",
+      "Bar"
+    ],
+    "opening_hours": "12:30-16:00, 19:00-01:00",
+    "price_per_person": 2600
+  },
+  {
+    "id": 30,
+    "name": "Satkar",
+    "city": "Mumbai",
+    "area": "Dadar",
+    "cuisine": [
+      "South Indian",
+      "North Indian"
+    ],
+    "capacity": 55,
+    "price_range": "₹",
+    "rating": 4.1,
+    "features": [
+      "Family Friendly",
+      "Vegetarian"
+    ],
+    "opening_hours": "07:30-22:30",
+    "price_per_person": 350
+  },
+  {
+    "id": 31,
+    "name": "Khyber",
+    "city": "Mumbai",
+    "area": "Kala Ghoda, Fort",
+    "cuisine": [
+      "North Indian",
+      "Mughlai"
+    ],
+    "capacity": 60,
+    "price_range": "₹₹₹",
+    "rating": 4.4,
+    "features": [
+      "Fine Dining",
+      "Art Gallery"
+    ],
+    "opening_hours": "12:30-15:45, 19:30-23:45",
+    "price_per_person": 1500
+  },
+  {
+    "id": 32,
+    "name": "Suzette",
+    "city": "Mumbai",
+    "area": "Bandra",
+    "cuisine": [
+      "French",
+      "Crepes"
+    ],
+    "capacity": 40,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Cozy",
+      "Dessert"
+    ],
+    "opening_hours": "09:00-23:00",
+    "price_per_person": 700
+  },
+  {
+    "id": 33,
+    "name": "Mahesh Lunch Home",
+    "city": "Mumbai",
+    "area": "Fort",
+    "cuisine": [
+      "Coastal",
+      "Seafood",
+      "Mangalorean"
+    ],
+    "capacity": 70,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Family Friendly",
+      "Iconic"
+    ],
+    "opening_hours": "11:30-15:30, 18:30-23:30",
+    "price_per_person": 1200
+  },
+  {
+    "id": 34,
+    "name": "Yauatcha",
+    "city": "Mumbai",
+    "area": "BKC",
+    "cuisine": [
+      "Chinese",
+      "Dim Sum"
+    ],
+    "capacity": 65,
+    "price_range": "₹₹₹",
+    "rating": 4.6,
+    "features": [
+      "Fine Dining",
+      "Tea House"
+    ],
+    "opening_hours": "12:00-00:00",
+    "price_per_person": 2600
+  },
+  {
+    "id": 35,
+    "name": "Kyani & Co.",
+    "city": "Mumbai",
+    "area": "Marine Lines",
+    "cuisine": [
+      "Parsi",
+      "Bakery"
+    ],
+    "capacity": 30,
+    "price_range": "₹",
+    "rating": 4.2,
+    "features": [
+      "Heritage",
+      "Breakfast"
+    ],
+    "opening_hours": "06:00-20:00",
+    "price_per_person": 350
+  },
+  {
+    "id": 36,
+    "name": "Peshawri",
+    "city": "Mumbai",
+    "area": "ITC Maratha, Andheri",
+    "cuisine": [
+      "North Indian",
+      "Frontier"
+    ],
+    "capacity": 55,
+    "price_range": "₹₹₹",
+    "rating": 4.7,
+    "features": [
+      "Fine Dining",
+      "Dal Bukhara"
+    ],
+    "opening_hours": "19:00-23:45",
+    "price_per_person": 2150
+  },
+  {
+    "id": 37,
+    "name": "O Pedro",
+    "city": "Mumbai",
+    "area": "BKC",
+    "cuisine": [
+      "Goan",
+      "Portuguese"
+    ],
+    "capacity": 60,
+    "price_range": "₹₹₹",
+    "rating": 4.5,
+    "features": [
+      "Trendy",
+      "Bar"
+    ],
+    "opening_hours": "12:00-16:00, 19:00-00:30",
+    "price_per_person": 2900
+  },
+  {
+    "id": 38,
+    "name": "Swati Snacks",
+    "city": "Mumbai",
+    "area": "Tardeo",
+    "cuisine": [
+      "Gujarati",
+      "Chaat"
+    ],
+    "capacity": 45,
+    "price_range": "₹",
+    "rating": 4.3,
+    "features": [
+      "Vegetarian",
+      "Family Friendly"
+    ],
+    "opening_hours": "12:00-22:00",
+    "price_per_person": 350
+  },
+  {
+    "id": 39,
+    "name": "Zaffran",
+    "city": "Mumbai",
+    "area": "Sitladevi Temple Road, Mahim",
+    "cuisine": [
+      "North Indian",
+      "Mughlai"
+    ],
+    "capacity": 50,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Family Friendly"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 800
+  },
+  {
+    "id": 40,
+    "name": "Smokehouse Deli",
+    "city": "Mumbai",
+    "area": "Bandra",
+    "cuisine": [
+      "European",
+      "Continental"
+    ],
+    "capacity": 55,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "All-Day Dining",
+      "Bakery"
+    ],
+    "opening_hours": "09:00-23:00",
+    "price_per_person": 1050
+  },
+  {
+    "id": 41,
+    "name": "Murugan Idli Shop",
+    "city": "Chennai",
+    "area": "Besant Nagar",
+    "cuisine": [
+      "South Indian"
+    ],
+    "capacity": 45,
+    "price_range": "₹",
+    "rating": 4.4,
+    "features": [
+      "Vegetarian",
+      "Chain",
+      "Quick Service"
+    ],
+    "opening_hours": "06:30-22:30",
+    "price_per_person": 300
+  },
+  {
+    "id": 42,
+    "name": "Annalakshmi",
+    "city": "Chennai",
+    "area": "Cathedral Road",
+    "cuisine": [
+      "South Indian",
+      "Vegetarian"
+    ],
+    "capacity": 60,
+    "price_range": "₹₹",
+    "rating": 4.5,
+    "features": [
+      "Temple Food",
+      "Pay-as-you-wish"
+    ],
+    "opening_hours": "11:30-15:00, 18:30-22:00",
+    "price_per_person": 700
+  },
+  {
+    "id": 43,
+    "name": "Dakshin",
+    "city": "Chennai",
+    "area": "ITC Grand Chola, Guindy",
+    "cuisine": [
+      "South Indian",
+      "Coastal"
+    ],
+    "capacity": 70,
+    "price_range": "₹₹₹",
+    "rating": 4.7,
+    "features": [
+      "Fine Dining",
+      "Award-Winning"
+    ],
+    "opening_hours": "12:30-14:45, 19:00-23:45",
+    "price_per_person": 1600
+  },
+  {
+    "id": 44,
+    "name": "Zambar",
+    "city": "Chennai",
+    "area": "Nungambakkam",
+    "cuisine": [
+      "Multi-Regional South Indian"
+    ],
+    "capacity": 55,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Buffet",
+      "Family Friendly"
+    ],
+    "opening_hours": "07:00-23:00",
+    "price_per_person": 1000
+  },
+  {
+    "id": 45,
+    "name": "Saravana Bhavan",
+    "city": "Chennai",
+    "area": "Multiple Locations",
+    "cuisine": [
+      "South Indian"
+    ],
+    "capacity": 80,
+    "price_range": "₹",
+    "rating": 4.2,
+    "features": [
+      "Vegetarian",
+      "Chain",
+      "Family Friendly"
+    ],
+    "opening_hours": "07:00-22:30",
+    "price_per_person": 250
+  },
+  {
+    "id": 46,
+    "name": "The Flying Elephant",
+    "city": "Chennai",
+    "area": "Park Hyatt, Guindy",
+    "cuisine": [
+      "Multi-cuisine",
+      "International"
+    ],
+    "capacity": 85,
+    "price_range": "₹₹₹",
+    "rating": 4.5,
+    "features": [
+      "Buffet",
+      "Live Counters"
+    ],
+    "opening_hours": "07:00-23:00",
+    "price_per_person": 1650
+  },
+  {
+    "id": 47,
+    "name": "Ponnusamy Hotel",
+    "city": "Chennai",
+    "area": "Nungambakkam",
+    "cuisine": [
+      "Chettinad",
+      "South Indian"
+    ],
+    "capacity": 50,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Spicy Food",
+      "Non-Veg Specialist"
+    ],
+    "opening_hours": "11:00-23:00",
+    "price_per_person": 950
+  },
+  {
+    "id": 48,
+    "name": "Zara The Tapas Bar",
+    "city": "Chennai",
+    "area": "Cathedral Road",
+    "cuisine": [
+      "Spanish",
+      "Mediterranean"
+    ],
+    "capacity": 45,
+    "price_range": "₹₹₹",
+    "rating": 4.4,
+    "features": [
+      "Fine Dining",
+      "Bar",
+      "Cozy"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 2600
+  },
+  {
+    "id": 49,
+    "name": "Sangeetha",
+    "city": "Chennai",
+    "area": "T Nagar",
+    "cuisine": [
+      "South Indian",
+      "North Indian"
+    ],
+    "capacity": 70,
+    "price_range": "₹",
+    "rating": 4.1,
+    "features": [
+      "Vegetarian",
+      "Family Friendly",
+      "Chain"
+    ],
+    "opening_hours": "07:00-23:00",
+    "price_per_person": 200
+  },
+  {
+    "id": 50,
+    "name": "Benjarong",
+    "city": "Chennai",
+    "area": "Nungambakkam",
+    "cuisine": [
+      "Thai"
+    ],
+    "capacity": 50,
+    "price_range": "₹₹₹",
+    "rating": 4.6,
+    "features": [
+      "Fine Dining",
+      "Authentic Thai"
+    ],
+    "opening_hours": "12:30-15:00, 19:00-23:30",
+    "price_per_person": 2500
+  },
+  {
+    "id": 51,
+    "name": "Madras Pavilion",
+    "city": "Chennai",
+    "area": "Mahabalipuram Road",
+    "cuisine": [
+      "South Indian",
+      "Multi-cuisine"
+    ],
+    "capacity": 90,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Buffet",
+      "Family Friendly"
+    ],
+    "opening_hours": "07:00-22:30",
+    "price_per_person": 850
+  },
+  {
+    "id": 52,
+    "name": "Buhari",
+    "city": "Chennai",
+    "area": "Anna Salai",
+    "cuisine": [
+      "North Indian",
+      "Mughlai"
+    ],
+    "capacity": 65,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Heritage",
+      "Family Friendly"
+    ],
+    "opening_hours": "11:30-23:00",
+    "price_per_person": 850
+  },
+  {
+    "id": 53,
+    "name": "Copper Chimney",
+    "city": "Chennai",
+    "area": "Anna Nagar",
+    "cuisine": [
+      "North Indian"
+    ],
+    "capacity": 55,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Family Friendly"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 800
+  },
+  {
+    "id": 54,
+    "name": "Madras Cafe",
+    "city": "Chennai",
+    "area": "Alwarpet",
+    "cuisine": [
+      "South Indian",
+      "Cafe"
+    ],
+    "capacity": 40,
+    "price_range": "₹",
+    "rating": 4.2,
+    "features": [
+      "Filter Coffee",
+      "Breakfast"
+    ],
+    "opening_hours": "07:00-21:00",
+    "price_per_person": 250
+  },
+  {
+    "id": 55,
+    "name": "The Marina",
+    "city": "Chennai",
+    "area": "Vivanta by Taj, Connemara",
+    "cuisine": [
+      "Continental",
+      "Seafood"
+    ],
+    "capacity": 50,
+    "price_range": "₹₹₹",
+    "rating": 4.5,
+    "features": [
+      "Fine Dining",
+      "Sea-facing"
+    ],
+    "opening_hours": "12:30-15:00, 19:30-23:30",
+    "price_per_person": 1700
+  },
+  {
+    "id": 56,
+    "name": "The Cascade",
+    "city": "Chennai",
+    "area": "The Raintree, Teynampet",
+    "cuisine": [
+      "Chinese",
+      "Asian"
+    ],
+    "capacity": 45,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Authentic Chinese"
+    ],
+    "opening_hours": "12:30-15:00, 19:00-23:00",
+    "price_per_person": 1150
+  },
+  {
+    "id": 57,
+    "name": "Absolute Barbecues",
+    "city": "Chennai",
+    "area": "OMR",
+    "cuisine": [
+      "Barbecue",
+      "Multi-cuisine"
+    ],
+    "capacity": 100,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Buffet",
+      "Family Friendly"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 650
+  },
+  {
+    "id": 58,
+    "name": "Nasi & Mee",
+    "city": "Chennai",
+    "area": "Saidapet",
+    "cuisine": [
+      "Malaysian",
+      "Asian"
+    ],
+    "capacity": 35,
+    "price_range": "₹₹",
+    "rating": 4.4,
+    "features": [
+      "Authentic",
+      "Cozy"
+    ],
+    "opening_hours": "12:00-15:00, 18:30-22:30",
+    "price_per_person": 1200
+  },
+  {
+    "id": 59,
+    "name": "Tuscana Pizzeria",
+    "city": "Chennai",
+    "area": "Nungambakkam",
+    "cuisine": [
+      "Italian",
+      "Pizza"
+    ],
+    "capacity": 40,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Wood-fired Pizza"
+    ],
+    "opening_hours": "11:30-23:00",
+    "price_per_person": 850
+  },
+  {
+    "id": 60,
+    "name": "Junior Kuppanna",
+    "city": "Chennai",
+    "area": "Adyar",
+    "cuisine": [
+      "Chettinad",
+      "South Indian"
+    ],
+    "capacity": 60,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Spicy Food",
+      "Non-Veg"
+    ],
+    "opening_hours": "11:00-23:00",
+    "price_per_person": 900
+  },
+  {
+    "id": 61,
+    "name": "Paradise Biryani",
+    "city": "Hyderabad",
+    "area": "Secunderabad",
+    "cuisine": [
+      "Biryani",
+      "Hyderabadi"
+    ],
+    "capacity": 120,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Iconic",
+      "Family Friendly"
+    ],
+    "opening_hours": "11:00-23:30",
+    "price_per_person": 1100
+  },
+  {
+    "id": 62,
+    "name": "Bawarchi",
+    "city": "Hyderabad",
+    "area": "RTC Cross Roads",
+    "cuisine": [
+      "Biryani",
+      "Hyderabadi"
+    ],
+    "capacity": 80,
+    "price_range": "₹₹",
+    "rating": 4.4,
+    "features": [
+      "Iconic",
+      "Biryani Specialist"
+    ],
+    "opening_hours": "11:00-23:00",
+    "price_per_person": 1200
+  },
+  {
+    "id": 63,
+    "name": "Shah Ghouse",
+    "city": "Hyderabad",
+    "area": "Tolichowki",
+    "cuisine": [
+      "Biryani",
+      "Mughlai"
+    ],
+    "capacity": 90,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Late Night",
+      "Haleem"
+    ],
+    "opening_hours": "11:00-01:00",
+    "price_per_person": 1050
+  },
+  {
+    "id": 64,
+    "name": "Ohri's",
+    "city": "Hyderabad",
+    "area": "Banjara Hills",
+    "cuisine": [
+      "Multi-cuisine"
+    ],
+    "capacity": 70,
+    "price_range": "₹₹",
+    "rating": 4.1,
+    "features": [
+      "Family Friendly",
+      "Chain"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 1100
+  },
+  {
+    "id": 65,
+    "name": "Chutneys",
+    "city": "Hyderabad",
+    "area": "Jubilee Hills",
+    "cuisine": [
+      "South Indian"
+    ],
+    "capacity": 60,
+    "price_range": "₹",
+    "rating": 4.3,
+    "features": [
+      "Vegetarian",
+      "Family Friendly"
+    ],
+    "opening_hours": "07:00-22:30",
+    "price_per_person": 300
+  },
+  {
+    "id": 66,
+    "name": "Jewel of Nizam",
+    "city": "Hyderabad",
+    "area": "Falaknuma Palace",
+    "cuisine": [
+      "Hyderabadi",
+      "Mughlai"
+    ],
+    "capacity": 50,
+    "price_range": "₹₹₹",
+    "rating": 4.8,
+    "features": [
+      "Fine Dining",
+      "Heritage",
+      "Royal Experience"
+    ],
+    "opening_hours": "19:00-23:00",
+    "price_per_person": 1650
+  },
+  {
+    "id": 67,
+    "name": "AB's - Absolute Barbecues",
+    "city": "Hyderabad",
+    "area": "Jubilee Hills",
+    "cuisine": [
+      "Barbecue",
+      "Multi-cuisine"
+    ],
+    "capacity": 110,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Buffet",
+      "Family Friendly"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 700
+  },
+  {
+    "id": 68,
+    "name": "Adaa",
+    "city": "Hyderabad",
+    "area": "Taj Falaknuma Palace",
+    "cuisine": [
+      "Hyderabadi",
+      "Awadhi"
+    ],
+    "capacity": 45,
+    "price_range": "₹₹₹",
+    "rating": 4.7,
+    "features": [
+      "Fine Dining",
+      "Heritage"
+    ],
+    "opening_hours": "19:30-23:30",
+    "price_per_person": 2450
+  },
+  {
+    "id": 69,
+    "name": "Pista House",
+    "city": "Hyderabad",
+    "area": "Charminar",
+    "cuisine": [
+      "Hyderabadi",
+      "Desserts"
+    ],
+    "capacity": 55,
+    "price_range": "₹",
+    "rating": 4.3,
+    "features": [
+      "Haleem",
+      "Bakery",
+      "Sweets"
+    ],
+    "opening_hours": "06:00-23:00",
+    "price_per_person": 400
+  },
+  {
+    "id": 70,
+    "name": "Rayalaseema Ruchulu",
+    "city": "Hyderabad",
+    "area": "Kondapur",
+    "cuisine": [
+      "Andhra",
+      "South Indian"
+    ],
+    "capacity": 65,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Spicy Food",
+      "Village Ambiance"
+    ],
+    "opening_hours": "11:30-22:30",
+    "price_per_person": 700
+  },
+  {
+    "id": 71,
+    "name": "Collage",
+    "city": "Hyderabad",
+    "area": "Hyatt Hyderabad Gachibowli",
+    "cuisine": [
+      "Multi-cuisine",
+      "International"
+    ],
+    "capacity": 75,
+    "price_range": "₹₹₹",
+    "rating": 4.5,
+    "features": [
+      "Buffet",
+      "Fine Dining"
+    ],
+    "opening_hours": "06:30-23:00",
+    "price_per_person": 2150
+  },
+  {
+    "id": 72,
+    "name": "Chicha's",
+    "city": "Hyderabad",
+    "area": "Jubilee Hills",
+    "cuisine": [
+      "North Indian",
+      "Mughlai"
+    ],
+    "capacity": 60,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Family Friendly",
+      "Kebabs"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 700
+  },
+  {
+    "id": 73,
+    "name": "Farzi Cafe",
+    "city": "Hyderabad",
+    "area": "Jubilee Hills",
+    "cuisine": [
+      "Modern Indian",
+      "Continental"
+    ],
+    "capacity": 70,
+    "price_range": "₹₹₹",
+    "rating": 4.4,
+    "features": [
+      "Molecular Gastronomy",
+      "Bar"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 2050
+  },
+  {
+    "id": 74,
+    "name": "Ram Ki Bandi",
+    "city": "Hyderabad",
+    "area": "Nallakunta",
+    "cuisine": [
+      "Street Food",
+      "Dosas"
+    ],
+    "capacity": 30,
+    "price_range": "₹",
+    "rating": 4.4,
+    "features": [
+      "Street Food",
+      "Budget-Friendly"
+    ],
+    "opening_hours": "17:00-23:00",
+    "price_per_person": 350
+  },
+  {
+    "id": 75,
+    "name": "The Spicy Venue",
+    "city": "Hyderabad",
+    "area": "Film Nagar",
+    "cuisine": [
+      "North Indian",
+      "Chinese"
+    ],
+    "capacity": 55,
+    "price_range": "₹₹",
+    "rating": 4.1,
+    "features": [
+      "Family Friendly"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 1050
+  },
+  {
+    "id": 76,
+    "name": "Flechazo",
+    "city": "Hyderabad",
+    "area": "Jubilee Hills",
+    "cuisine": [
+      "European",
+      "Continental"
+    ],
+    "capacity": 50,
+    "price_range": "₹₹₹",
+    "rating": 4.4,
+    "features": [
+      "Fine Dining",
+      "Romantic"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 2250
+  },
+  {
+    "id": 77,
+    "name": "Amul Ice Cream Parlour",
+    "city": "Hyderabad",
+    "area": "Ameerpet",
+    "cuisine": [
+      "Desserts",
+      "Ice Cream"
+    ],
+    "capacity": 40,
+    "price_range": "₹",
+    "rating": 4.2,
+    "features": [
+      "Family Friendly",
+      "Quick Service"
+    ],
+    "opening_hours": "11:00-23:00",
+    "price_per_person": 250
+  },
+  {
+    "id": 78,
+    "name": "Altitude Lounge Bar",
+    "city": "Hyderabad",
+    "area": "The Westin, HITEC City",
+    "cuisine": [
+      "Continental",
+      "Asian"
+    ],
+    "capacity": 60,
+    "price_range": "₹₹₹",
+    "rating": 4.5,
+    "features": [
+      "Rooftop",
+      "Bar",
+      "City Views"
+    ],
+    "opening_hours": "18:00-01:00",
+    "price_per_person": 1900
+  },
+  {
+    "id": 79,
+    "name": "Kritunga",
+    "city": "Hyderabad",
+    "area": "Hitech City",
+    "cuisine": [
+      "Andhra",
+      "South Indian"
+    ],
+    "capacity": 75,
+    "price_range": "₹₹",
+    "rating": 4.1,
+    "features": [
+      "Spicy Food",
+      "Non-Veg"
+    ],
+    "opening_hours": "11:30-22:30",
+    "price_per_person": 750
+  },
+  {
+    "id": 80,
+    "name": "Bidri",
+    "city": "Hyderabad",
+    "area": "ITC Kakatiya, Begumpet",
+    "cuisine": [
+      "Hyderabadi",
+      "North Indian"
+    ],
+    "capacity": 55,
+    "price_range": "₹₹₹",
+    "rating": 4.6,
+    "features": [
+      "Fine Dining",
+      "Authentic"
+    ],
+    "opening_hours": "19:00-23:45",
+    "price_per_person": 2050
+  },
+  {
+    "id": 81,
+    "name": "Bukhara",
+    "city": "New Delhi",
+    "area": "ITC Maurya, Diplomatic Enclave",
+    "cuisine": [
+      "North Indian",
+      "Frontier"
+    ],
+    "capacity": 60,
+    "price_range": "₹₹₹",
+    "rating": 4.8,
+    "features": [
+      "Fine Dining",
+      "World-Famous",
+      "Dal Bukhara"
+    ],
+    "opening_hours": "19:00-23:45",
+    "price_per_person": 2550
+  },
+  {
+    "id": 82,
+    "name": "Indian Accent",
+    "city": "New Delhi",
+    "area": "The Lodhi, Lodhi Road",
+    "cuisine": [
+      "Modern Indian"
+    ],
+    "capacity": 50,
+    "price_range": "₹₹₹",
+    "rating": 4.7,
+    "features": [
+      "Fine Dining",
+      "Award-Winning",
+      "Innovative"
+    ],
+    "opening_hours": "12:00-14:30, 19:00-23:30",
+    "price_per_person": 1800
+  },
+  {
+    "id": 83,
+    "name": "Karim's",
+    "city": "New Delhi",
+    "area": "Jama Masjid",
+    "cuisine": [
+      "Mughlai",
+      "Kebabs"
+    ],
+    "capacity": 70,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Heritage",
+      "Iconic",
+      "Since 1913"
+    ],
+    "opening_hours": "07:00-23:00",
+    "price_per_person": 1100
+  },
+  {
+    "id": 84,
+    "name": "Saravana Bhavan",
+    "city": "New Delhi",
+    "area": "Connaught Place",
+    "cuisine": [
+      "South Indian"
+    ],
+    "capacity": 85,
+    "price_range": "₹",
+    "rating": 4.2,
+    "features": [
+      "Vegetarian",
+      "Chain",
+      "Family Friendly"
+    ],
+    "opening_hours": "08:00-23:00",
+    "price_per_person": 400
+  },
+  {
+    "id": 85,
+    "name": "Moti Mahal",
+    "city": "New Delhi",
+    "area": "Daryaganj",
+    "cuisine": [
+      "North Indian",
+      "Mughlai"
+    ],
+    "capacity": 65,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Heritage",
+      "Butter Chicken Birthplace"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 800
+  },
+  {
+    "id": 86,
+    "name": "Dum Pukht",
+    "city": "New Delhi",
+    "area": "ITC Maurya, Diplomatic Enclave",
+    "cuisine": [
+      "Awadhi",
+      "Mughlai"
+    ],
+    "capacity": 55,
+    "price_range": "₹₹₹",
+    "rating": 4.7,
+    "features": [
+      "Fine Dining",
+      "Royal Cuisine"
+    ],
+    "opening_hours": "19:00-23:45",
+    "price_per_person": 1550
+  },
+  {
+    "id": 87,
+    "name": "Haldiram's",
+    "city": "New Delhi",
+    "area": "Chandni Chowk",
+    "cuisine": [
+      "North Indian",
+      "Chaat"
+    ],
+    "capacity": 90,
+    "price_range": "₹",
+    "rating": 4.1,
+    "features": [
+      "Vegetarian",
+      "Sweets",
+      "Family Friendly"
+    ],
+    "opening_hours": "08:00-23:00",
+    "price_per_person": 250
+  },
+  {
+    "id": 88,
+    "name": "Wasabi by Morimoto",
+    "city": "New Delhi",
+    "area": "Taj Mahal Hotel, Man Singh Road",
+    "cuisine": [
+      "Japanese",
+      "Asian"
+    ],
+    "capacity": 45,
+    "price_range": "₹₹₹",
+    "rating": 4.7,
+    "features": [
+      "Fine Dining",
+      "Celebrity Chef"
+    ],
+    "opening_hours": "12:30-14:45, 19:00-23:45",
+    "price_per_person": 2300
+  },
+  {
+    "id": 89,
+    "name": "Pandara Road Dhaba",
+    "city": "New Delhi",
+    "area": "Pandara Road Market",
+    "cuisine": [
+      "North Indian",
+      "Mughlai"
+    ],
+    "capacity": 40,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Iconic",
+      "Late Night"
+    ],
+    "opening_hours": "12:00-01:00",
+    "price_per_person": 700
+  },
+  {
+    "id": 90,
+    "name": "Varq",
+    "city": "New Delhi",
+    "area": "Taj Mahal Hotel, Man Singh Road",
+    "cuisine": [
+      "Modern Indian"
+    ],
+    "capacity": 50,
+    "price_range": "₹₹₹",
+    "rating": 4.6,
+    "features": [
+      "Fine Dining",
+      "Contemporary"
+    ],
+    "opening_hours": "19:00-23:45",
+    "price_per_person": 1900
+  },
+  {
+    "id": 91,
+    "name": "Gulati",
+    "city": "New Delhi",
+    "area": "Pandara Road Market",
+    "cuisine": [
+      "North Indian"
+    ],
+    "capacity": 45,
+    "price_range": "₹₹",
+    "rating": 4.2,
+    "features": [
+      "Family Friendly",
+      "Iconic"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 700
+  },
+  {
+    "id": 92,
+    "name": "Olive Bar & Kitchen",
+    "city": "New Delhi",
+    "area": "Mehrauli",
+    "cuisine": [
+      "Mediterranean",
+      "European"
+    ],
+    "capacity": 55,
+    "price_range": "₹₹₹",
+    "rating": 4.5,
+    "features": [
+      "Outdoor Seating",
+      "Bar",
+      "Qutub View"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 2350
+  },
+  {
+    "id": 93,
+    "name": "Farzi Cafe",
+    "city": "New Delhi",
+    "area": "Aerocity",
+    "cuisine": [
+      "Modern Indian",
+      "Continental"
+    ],
+    "capacity": 75,
+    "price_range": "₹₹₹",
+    "rating": 4.4,
+    "features": [
+      "Molecular Gastronomy",
+      "Bar"
+    ],
+    "opening_hours": "12:00-23:30",
+    "price_per_person": 2500
+  },
+  {
+    "id": 94,
+    "name": "Barbeque Nation",
+    "city": "New Delhi",
+    "area": "Connaught Place",
+    "cuisine": [
+      "Barbecue",
+      "Multi-cuisine"
+    ],
+    "capacity": 100,
+    "price_range": "₹₹",
+    "rating": 4.1,
+    "features": [
+      "Buffet",
+      "Family Friendly"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 1150
+  },
+  {
+    "id": 95,
+    "name": "Smoke House Deli",
+    "city": "New Delhi",
+    "area": "Khan Market",
+    "cuisine": [
+      "European",
+      "Continental"
+    ],
+    "capacity": 60,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "All-Day Dining",
+      "Bakery"
+    ],
+    "opening_hours": "09:00-23:00",
+    "price_per_person": 1150
+  },
+  {
+    "id": 96,
+    "name": "Punjab Grill",
+    "city": "New Delhi",
+    "area": "Select Citywalk, Saket",
+    "cuisine": [
+      "North Indian",
+      "Punjabi"
+    ],
+    "capacity": 70,
+    "price_range": "₹₹₹",
+    "rating": 4.4,
+    "features": [
+      "Fine Dining",
+      "Bar"
+    ],
+    "opening_hours": "12:00-23:00",
+    "price_per_person": 2250
+  },
+  {
+    "id": 97,
+    "name": "Evergreen Sweet House",
+    "city": "New Delhi",
+    "area": "Green Park",
+    "cuisine": [
+      "South Indian",
+      "North Indian"
+    ],
+    "capacity": 50,
+    "price_range": "₹",
+    "rating": 4.2,
+    "features": [
+      "Vegetarian",
+      "Sweets"
+    ],
+    "opening_hours": "08:00-22:30",
+    "price_per_person": 250
+  },
+  {
+    "id": 98,
+    "name": "Café Lota",
+    "city": "New Delhi",
+    "area": "National Crafts Museum, Pragati Maidan",
+    "cuisine": [
+      "Regional Indian"
+    ],
+    "capacity": 45,
+    "price_range": "₹₹",
+    "rating": 4.4,
+    "features": [
+      "Contemporary",
+      "Art & Culture"
+    ],
+    "opening_hours": "10:00-19:30",
+    "price_per_person": 950
+  },
+  {
+    "id": 99,
+    "name": "Yum Yum Cha",
+    "city": "New Delhi",
+    "area": "Cyber Hub, Gurgaon",
+    "cuisine": [
+      "Asian",
+      "Dim Sum"
+    ],
+    "capacity": 50,
+    "price_range": "₹₹",
+    "rating": 4.3,
+    "features": [
+      "Modern Asian"
+    ],
+    "opening_hours": "12:00-00:00",
+    "price_per_person": 1000
+  },
+  {
+    "id": 100,
+    "name": "The Big Chill Cakery",
+    "city": "New Delhi",
+    "area": "Khan Market",
+    "cuisine": [
+      "Cafe",
+      "Desserts"
+    ],
+    "capacity": 40,
+    "price_range": "₹₹",
+    "rating": 4.4,
+    "features": [
+      "Bakery",
+      "Desserts",
+      "Cozy"
+    ],
+    "opening_hours": "10:00-23:00",
+    "price_per_person": 750
+  }
+]
