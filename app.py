@@ -337,7 +337,7 @@ def main():
         """
         <div class="main-header">
             <h1>🍽️ Restaurant Reservation AI</h1>
-            <p>Your intelligent assistant for discovering and booking the best restaurants across India</p>
+            <p>Your intelligent assistant for discovering and booking the best restaurants</p>
         </div>
     """,
         unsafe_allow_html=True,
@@ -387,20 +387,6 @@ def main():
         """,
             unsafe_allow_html=True,
         )
-
-        st.divider()
-
-        # Cities covered
-        st.markdown("### 🌆 Cities Covered")
-        cities = [
-            "🏙️ Bangalore",
-            "🌃 Mumbai",
-            "🌆 Chennai",
-            "🌇 Hyderabad",
-            "🏛️ New Delhi",
-        ]
-        for city in cities:
-            st.markdown(f"- {city}")
 
         st.divider()
 
@@ -468,10 +454,10 @@ def main():
             """
         - 🤖 **AI-Powered** conversations
         - 🔍 **Smart** search filters
-        - 📊 **100** curated restaurants  
-        - 🏙️ **5** major cities
+        - 📊 **Curated** restaurant database
         - ⚡ **Real-time** responses
         - 🎯 **Personalized** suggestions
+        - 📅 **Easy** booking process
         """
         )
 

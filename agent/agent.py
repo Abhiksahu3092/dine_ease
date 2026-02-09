@@ -43,13 +43,12 @@ RULES:
 4. After ALL slots are collected:
    → Use the appropriate tool
 
-5. ⚠️ CRITICAL - ANTI-HALLUCINATION RULES:
-   → You can ONLY recommend restaurants returned by the search_restaurants tool
-   → NEVER mention restaurant names from your general knowledge or training data
-   → NEVER invent, suggest, or hallucinate restaurant information
-   → If a restaurant is not in the tool results, it does NOT exist for this conversation
-   → DO NOT mention hotels, famous restaurants, or real-world establishments unless they appear in tool results
-   → ONLY use information explicitly provided by tool responses
+5. ⚠️ CRITICAL - SHOW TOOL RESULTS, DON'T HALLUCINATE:
+   → When you get tool results, DISPLAY THEM to the user by parsing the JSON
+   → List restaurant names EXACTLY as they appear in the tool's JSON response
+   → NEVER add restaurant names not in the tool output (no Taj, Oberoi, ITC, Leela, etc.)
+   → If it's not in the returned JSON, it DOESN'T EXIST
+   → ONLY use restaurant data from the tool's "restaurants" array
 
 6. NEVER provide real-world information (phone numbers, addresses, websites).
    Only use tool results.
@@ -60,11 +59,12 @@ RULES:
    ARGS: { json }
 
 8. After tool execution, YOU MUST:
-   - For search results: List restaurants by NAME (not ID) with rating and price
-   - After showing results, ask: "Which restaurant would you like to book? (mention the name)"
-   - For booking: Display the complete confirmation message from the tool result EXACTLY as provided
-   - If tool result has a "message" field, show it directly to the user
-   - NEVER just say "I found restaurants" without listing them
+   - For search results: Parse the JSON and list ALL restaurants from the "restaurants" array
+   - Format each as: "• Name - Area (⭐ Rating, ₹Price/person)"
+   - Show the total count from the "total" field
+   - After listing ALL restaurants, ask: "Which restaurant would you like to book?"
+   - For booking: Display the complete confirmation message from "message" field EXACTLY
+   - ALWAYS show the actual data - NEVER say "I found restaurants" without listing them
 
 9. Booking confirmations:
    - When book_table returns success, show the FULL formatted confirmation message
@@ -294,7 +294,30 @@ def run_agent(client: LLMClient, messages: List[Dict[str, Any]]) -> Dict[str, An
     tool_name = tool_call["name"]
     tool_args = tool_call["args"]
 
+    logger.info(f"🔧 Executing tool: {tool_name}")
+    logger.info(f"📝 Tool arguments: {json.dumps(tool_args, indent=2)}")
+
     tool_output = execute_tool(tool_name, tool_args)
+
+    logger.info(f"✅ Tool executed successfully")
+    logger.info(f"📊 Tool output length: {len(tool_output)} chars")
+
+    # Log first 500 chars of tool output for debugging
+    try:
+        parsed = json.loads(tool_output)
+        if tool_name == "search_restaurants":
+            total = parsed.get("total", 0)
+            restaurants = parsed.get("restaurants", [])
+            logger.info(
+                f"🍽️  Found {total} restaurants, returning top {len(restaurants)}"
+            )
+            if restaurants:
+                logger.info(
+                    f"📋 First restaurant: {restaurants[0].get('name', 'Unknown')}"
+                )
+    except:
+        logger.warning(f"⚠️  Could not parse tool output as JSON")
+        logger.info(f"Raw output preview: {tool_output[:200]}...")
 
     # Add tool call to history
     orchestrator_messages.append(
@@ -321,10 +344,43 @@ def run_agent(client: LLMClient, messages: List[Dict[str, Any]]) -> Dict[str, An
     )
 
     # 4. FINAL ANSWER - Generate response after tool execution
+    # Add strict instruction to use ONLY tool results
+    orchestrator_messages.append(
+        {
+            "role": "system",
+            "content": f"""CRITICAL INSTRUCTION:
+The tool has returned this EXACT data in JSON format:
+{tool_output}
+
+YOU MUST:
+1. Parse this JSON data
+2. Show ONLY the restaurants listed in the "restaurants" array above
+3. Format each restaurant nicely for the user
+4. NEVER add any restaurant names not in this JSON
+5. If JSON shows 0 results, say no restaurants found
+
+DO NOT use your general knowledge. ONLY use the data above.""",
+        }
+    )
+
     try:
         final_answer = llm_chat(client, orchestrator_messages, max_tokens=1024)
     except:
-        final_answer = f"Executed tool `{tool_name}`. Result: {tool_output}"
+        # Fallback: manually format the tool output
+        try:
+            data = json.loads(tool_output)
+            if tool_name == "search_restaurants":
+                restaurants = data.get("restaurants", [])
+                if restaurants:
+                    final_answer = f"Found {data['total']} restaurants:\n\n"
+                    for r in restaurants:
+                        final_answer += f"• **{r['name']}** - {r['area']} (⭐ {r['rating']}, ₹{r['price_per_person']}/person)\n"
+                else:
+                    final_answer = "No restaurants found matching your criteria."
+            else:
+                final_answer = data.get("message", tool_output)
+        except:
+            final_answer = f"Executed tool `{tool_name}`. Result: {tool_output}"
 
     return {"content": final_answer, "plan": plan, "used_tools": [tool_name]}
 
