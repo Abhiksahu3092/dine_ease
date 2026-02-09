@@ -29,7 +29,7 @@ Extract user intent and information slots from conversation.
 
 Valid intents:
 - "search_restaurants" - user wants to find restaurants
-- "book_table" - user wants to book a reservation (or selected a restaurant from search results)
+- "book_table" - user wants to book a reservation (or just selected a restaurant from search results)
 - "other" - general conversation
 
 For search_restaurants, collect these slots:
@@ -47,15 +47,16 @@ They are stored for later booking. Only city, party_size, and optionally cuisine
 
 For book_table, collect:
 REQUIRED:
-- restaurant_id (number) - Extract from conversation history when user mentions a restaurant name from search results
-- customer_name (string)
-- phone (string)  
-- date (YYYY-MM-DD) - Use from earlier conversation if available
-- time (HH:MM) - Use from earlier conversation if available
-- party_size (number) - Use from earlier conversation if available
+- restaurant_id (number) - ***CRITICAL***: When user mentions a restaurant name, look back in conversation history for the most recent search_restaurants tool result. Find the restaurant by name in the "restaurants" array and extract its "id" field. Set restaurant_id to that id.
+- customer_name (string) - Extract from user message when they provide their name
+- phone (string) - Extract phone number from user message
+- date (YYYY-MM-DD) - Reuse from earlier conversation if available
+- time (HH:MM) - Reuse from earlier conversation if available
+- party_size (number) - Reuse from earlier conversation if available
 
-IMPORTANT: When user selects a restaurant by name after seeing search results, switch intent to "book_table" 
-and extract restaurant_id by looking up the restaurant name in previous search_restaurants tool results.
+***IMPORTANT***: 
+1. If user just saw search results and mentions a restaurant name (e.g., "Toit" or "I want to book Toit"), set intent="book_table" and extract restaurant_id by looking up the name in the previous tool results.
+2. When switching to book_table intent, carry forward date, time, and party_size from the earlier search slots.
 
 Recommend tools ONLY when all REQUIRED slots are present.
 
@@ -266,20 +267,28 @@ ARGS: {json.dumps(tool_args)}
                 return """
 Current Step: User saw restaurant list. Need to collect booking details.
 
-YOUR ACTION: Ask:
+YOUR ACTION: 
+You MUST ask this EXACT question:
 "Which restaurant would you like to book? Please also provide your name and phone number for the reservation."
 
-DO NOT call any tool.
+DO NOT call any tool. DO NOT proceed without asking this question.
 """
             else:
                 # Have restaurant but missing personal details
+                questions_needed = []
+                if not customer_name:
+                    questions_needed.append("name")
+                if not phone:
+                    questions_needed.append("phone number")
+                    
                 return f"""
-Current Step: User selected restaurant. Missing: {', '.join(missing)}
+Current Step: User selected restaurant (ID: {restaurant_id}). Still need: {', '.join(questions_needed)}
 
-YOUR ACTION: Ask:
-"Great! Please provide your name and phone number for the reservation."
+YOUR ACTION:
+You MUST ask this EXACT question:
+"Great! What's your name and phone number for the reservation?"
 
-DO NOT call any tool.
+DO NOT call any tool. DO NOT proceed without asking for name and phone.
 """
         
         # Have all personal details but missing date/time (shouldn't happen often)
@@ -321,6 +330,12 @@ def run_agent(client: LLMClient, messages: List[Dict[str, Any]]) -> Dict[str, An
 
     # 1. PLANNER - Extract intent and slots
     plan = _generate_plan(client, messages)
+    
+    print(f"\n🧠 PLANNER OUTPUT:")
+    print(f"   Intent: {plan.get('intent')}")
+    print(f"   Slots: {plan.get('slots')}")
+    print(f"   Recommended Tools: {plan.get('recommended_tools')}")
+    print(f"   Missing Slots: {plan.get('missing_slots')}\n")
 
     # 2. BUILD STEP-SPECIFIC INSTRUCTION
     step_instruction = _build_step_instruction(plan)
