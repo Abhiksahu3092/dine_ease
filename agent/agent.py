@@ -193,35 +193,31 @@ TOOL: search_restaurants
 ARGS: {json.dumps(tool_args)}
 """
         
-        # Missing city
+        # Missing any required info - ask for ALL missing at once
+        missing = []
         if not city:
-            return """
-Current Step: User wants to search restaurants but hasn't mentioned the city.
-
-YOUR ACTION: Ask:
-"Which city would you like to dine in?"
-
-DO NOT call any tool.
-"""
-        
-        # Missing party_size
+            missing.append("city")
         if not party_size:
-            return f"""
-Current Step: User wants restaurants in {city} but hasn't mentioned party size.
-
-YOUR ACTION: Ask:
-"How many people will be dining?"
-
-DO NOT call any tool.
-"""
-        
-        # Missing date or time
+            missing.append("party size")
         if not date or not time:
+            missing.append("date and time")
+        
+        if missing:
+            questions = []
+            if "city" in missing:
+                questions.append("Which city would you like to dine in?")
+            if "party size" in missing:
+                questions.append("How many people will be dining?")
+            if "date and time" in missing:
+                questions.append("What date and time? (e.g., Feb 10 at 7pm)")
+            
+            combined_question = " ".join(questions)
+            
             return f"""
-Current Step: User wants restaurants in {city} for {party_size} people, but hasn't provided date/time.
+Current Step: User wants to search restaurants. Missing: {', '.join(missing)}
 
-YOUR ACTION: Ask:
-"What date and time would you like to dine? (e.g., Feb 10 at 7pm)"
+YOUR ACTION: Ask ALL questions at once:
+"{combined_question} You can also tell me your cuisine preference if you have one."
 
 DO NOT call any tool.
 """
@@ -254,46 +250,45 @@ TOOL: book_table
 ARGS: {json.dumps(tool_args)}
 """
         
-        # Missing restaurant - ask for it
+        # Build list of missing information
+        missing = []
         if not restaurant_id:
-            return """
-Current Step: User wants to book but hasn't selected a restaurant yet.
+            missing.append("restaurant name")
+        if not customer_name:
+            missing.append("your name")
+        if not phone:
+            missing.append("phone number")
+        
+        # Ask for ALL missing booking info at once
+        if missing:
+            if not restaurant_id:
+                # After search results - ask for everything
+                return """
+Current Step: User saw restaurant list. Need to collect booking details.
 
 YOUR ACTION: Ask:
-"Which restaurant would you like to book? (Please tell me the restaurant name)"
+"Which restaurant would you like to book? Please also provide your name and phone number for the reservation."
+
+DO NOT call any tool.
+"""
+            else:
+                # Have restaurant but missing personal details
+                return f"""
+Current Step: User selected restaurant. Missing: {', '.join(missing)}
+
+YOUR ACTION: Ask:
+"Great! Please provide your name and phone number for the reservation."
 
 DO NOT call any tool.
 """
         
-        # Have restaurant but missing customer name - ask for name first
-        if restaurant_id and not customer_name:
-            return """
-Current Step: User selected a restaurant. Now need customer name.
-
-YOUR ACTION: Ask:
-"Great! What's your name for the reservation?"
-
-DO NOT call any tool.
-"""
-        
-        # Have restaurant and name but missing phone - ask for phone
-        if restaurant_id and customer_name and not phone:
-            return f"""
-Current Step: User selected restaurant and provided name ({customer_name}). Now need phone number.
-
-YOUR ACTION: Ask:
-"What's your phone number?"
-
-DO NOT call any tool.
-"""
-        
-        # Have all personal details but missing date/time
-        if restaurant_id and customer_name and phone and (not date or not time):
+        # Have all personal details but missing date/time (shouldn't happen often)
+        if not date or not time:
             return """
 Current Step: Have restaurant and customer details, but need date/time confirmation.
 
 YOUR ACTION: Ask:
-"What date and time would you like to book? (We already have {date} at {time} from earlier - confirm or change)"
+"What date and time would you like to book? (e.g., Feb 10 at 7pm)"
 
 DO NOT call any tool.
 """
@@ -303,7 +298,7 @@ DO NOT call any tool.
 Current Step: General conversation.
 
 YOUR ACTION: Respond naturally and help the user get started.
-Ask: "Hi! I can help you find and book restaurants. Which city would you like to dine in?"
+Ask: "Hi! I can help you find and book restaurants. Please tell me: Which city would you like to dine in? How many people will be dining? And what date and time? (You can also mention your cuisine preference if you have one)"
 """
 
 
@@ -425,8 +420,8 @@ def run_agent(client: LLMClient, messages: List[Dict[str, Any]]) -> Dict[str, An
                     final_answer += f"   📍 {r['city']} | 🍽️ {cuisines}\n"
                     final_answer += f"   ⭐ {r['rating']}/5 | 💰 ₹{r['price_per_person']}/person ({r['price_range']})\n\n"
                 
-                # COMPULSORY: Ask for booking details
-                final_answer += "Which restaurant would you like to book? (Please tell me the restaurant name)"
+                # COMPULSORY: Ask for ALL booking details at once
+                final_answer += "Which restaurant would you like to book? Please also provide your name and phone number for the reservation."
         
         # For bookings, use the formatted message from tool
         elif tool_name == "book_table":
@@ -460,7 +455,7 @@ class RestaurantAgent:
 
     def get_initial_greeting(self) -> str:
         """Get initial greeting"""
-        return "Hi! I can help you find and book restaurants. Which city are you looking to dine in?"
+        return "Hi! I can help you find and book restaurants. Please tell me: Which city would you like to dine in? How many people will be dining? And what date and time? (You can also mention your cuisine preference if you have one)"
 
     def get_conversation_length(self) -> int:
         """Get conversation length"""
