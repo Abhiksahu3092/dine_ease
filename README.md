@@ -13,7 +13,7 @@ This project implements an intelligent restaurant reservation system that uses a
 - **Personalized Recommendations**: Get suggestions based on preferences and occasions
 - **Availability Checking**: Check restaurant availability for specific dates and times
 - **Reservation Management**: Create and manage restaurant bookings
-- **Multi-City Support**: Covers Bangalore, Mumbai, Chennai, Hyderabad, and New Delhi
+- **Multi-City Support**: Discover restaurants across multiple cities
 
 ## 🏗️ Architecture
 
@@ -28,7 +28,7 @@ restaurant-ai-agent/
 │   ├── tools.py          # Restaurant search and booking tools
 │   └── schemas.py        # Pydantic models for data validation
 ├── data/
-│   └── restaurants.json  # Static restaurant database (100 entries)
+│   └── restaurants.json  # Static restaurant database
 ├── llm/
 │   └── client.py         # LLM API client interface
 ├── requirements.txt      # Python dependencies
@@ -69,14 +69,8 @@ User interface featuring:
 
 ### Data Characteristics
 
-- **Total Restaurants**: 100 (20 per city)
-- **Cities Covered**: 
-  - Bangalore
-  - Mumbai
-  - Chennai
-  - Hyderabad
-  - New Delhi
-- **Data Source**: Curated from real, well-known restaurants
+- **Database Type**: Curated static restaurant collection
+- **Data Source**: Based on real, well-known restaurants
 - **Status**: **STATIC** - not real-time or live data
 
 ### Restaurant Attributes
