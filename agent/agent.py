@@ -17,143 +17,54 @@ logger = logging.getLogger("RestaurantAgent")
 # SYSTEM PROMPTS
 # =====================================================
 SYSTEM_PROMPT = """
-You are the GoodFoods Reservation AI.
+You are the GoodFoods Reservation AI - a helpful restaurant discovery and booking assistant.
 
-RULES:
-1. NEVER call a tool until ALL required slots are known:
-   - For search: city, party_size, date, time (ALL 4 required before showing restaurants)
-   - Optional for search: cuisine (if user mentions it, include it in the search)
-   - For booking: restaurant_id, customer_name, phone, date, time, party_size (all required)
-
-2. If ANY required slot is missing:
-   → ASK A CLEAR QUESTION to fill the missing slots ONE AT A TIME.
-   → DO NOT call any tool yet.
-   → DO NOT show restaurant suggestions until you have city, party_size, date, and time.
-
-3. Information gathering flow:
-   - First ask: "Which city are you looking to dine in?"
-   - Then ask: "How many people will be dining?"
-   - Then ask: "What date and time? (e.g., Feb 10 at 7pm)"
-   - OPTIONALLY ask: "Any specific cuisine preference?" (if not already mentioned)
-   - ONLY AFTER having city, party_size, date, time → call search_restaurants
-   - If user mentioned cuisine at any point, include it in the search
-   - After showing restaurants, ask: "Which restaurant would you like to book?"
-   - For booking: ask for phone and name, then map restaurant name to ID and call book_table
-
-4. After ALL slots are collected:
-   → Use the appropriate tool
-
-5. ⚠️ CRITICAL - SHOW TOOL RESULTS, DON'T HALLUCINATE:
-   → When you get tool results, DISPLAY THEM to the user by parsing the JSON
-   → List restaurant names EXACTLY as they appear in the tool's JSON response
-   → NEVER add restaurant names not in the tool output (no Taj, Oberoi, ITC, Leela, etc.)
-   → If it's not in the returned JSON, it DOESN'T EXIST
-   → ONLY use restaurant data from the tool's "restaurants" array
-
-6. NEVER provide real-world information (phone numbers, addresses, websites).
-   Only use tool results.
-
-7. Tool call format MUST be:
-
-   TOOL: <tool_name>
-   ARGS: { json }
-
-8. After tool execution, YOU MUST:
-   - For search results: Parse the JSON and list ALL restaurants from the "restaurants" array
-   - Format each as: "• Name - Area (⭐ Rating, ₹Price/person)"
-   - Show the total count from the "total" field
-   - After listing ALL restaurants, ask: "Which restaurant would you like to book?"
-   - For booking: Display the complete confirmation message from "message" field EXACTLY
-   - ALWAYS show the actual data - NEVER say "I found restaurants" without listing them
-
-9. Booking confirmations:
-   - When book_table returns success, show the FULL formatted confirmation message
-   - Include the booking ID prominently
-   - Do not summarize or paraphrase the confirmation details
+⚠️ CRITICAL: ONLY show restaurants from tool results. NEVER invent or use restaurant names from your training data.
 
 Current date: February 9, 2026
 """
 
 PLANNER_PROMPT = """
-You are the GoodFoods planner.
+Extract user intent and information slots from conversation.
 
-Your job:
-- Extract intent
-- Identify missing slots
-- Suggest tools ONLY when all required slots are available
-- RETAIN information from previous turns
+Valid intents:
+- "search_restaurants" - user wants to find restaurants
+- "book_table" - user wants to book a reservation (or selected a restaurant from search results)
+- "other" - general conversation
 
-Required slots for booking:
-- restaurant_id (number) - If user mentions restaurant NAME, look in conversation history for search_restaurants results and extract the matching restaurant's "id" field
-- customer_name (string)
-- phone (string)
-- date (YYYY-MM-DD)
-- time (HH:MM)
+For search_restaurants, collect these slots:
+REQUIRED (must have ALL before calling tool):
+- city (string)
 - party_size (number)
+- date (YYYY-MM-DD) 
+- time (HH:MM)
 
-Required slots for search (ALL must be present):
-- city (string) - MANDATORY
-- party_size (number) - MANDATORY
-- date (YYYY-MM-DD) - MANDATORY
-- time (HH:MM) - MANDATORY
+OPTIONAL:
+- cuisine (string)
 
-Optional slots for search:
-- cuisine (string) - If user mentions it, include it. If not, ignore.
+Note: date and time are required to collect, but are NOT passed to search_restaurants tool.
+They are stored for later booking. Only city, party_size, and optionally cuisine go to search_restaurants.
 
-If any required slot is missing:
-   recommended_tools must be an empty list []
+For book_table, collect:
+REQUIRED:
+- restaurant_id (number) - Extract from conversation history when user mentions a restaurant name from search results
+- customer_name (string)
+- phone (string)  
+- date (YYYY-MM-DD) - Use from earlier conversation if available
+- time (HH:MM) - Use from earlier conversation if available
+- party_size (number) - Use from earlier conversation if available
 
-Examples:
-User: "book me a table"
-Result:
-  recommended_tools = []
-  missing_slots = ["restaurant_id", "customer_name", "phone", "date", "time", "party_size"]
+IMPORTANT: When user selects a restaurant by name after seeing search results, switch intent to "book_table" 
+and extract restaurant_id by looking up the restaurant name in previous search_restaurants tool results.
 
-User: "suggest restaurants in Delhi"
-Result:
-  intent = "search_restaurants"
-  recommended_tools = []
-  missing_slots = ["party_size", "date", "time"]
-  slots = {"city": "Delhi"}
+Recommend tools ONLY when all REQUIRED slots are present.
 
-User: "Italian restaurants in Delhi"
-Result:
-  intent = "search_restaurants"
-  recommended_tools = []
-  missing_slots = ["party_size", "date", "time"]
-  slots = {"city": "Delhi", "cuisine": "Italian"}
-
-User: "Delhi for 4 people on Feb 10 at 7pm"
-Result:
-  intent = "search_restaurants"
-  recommended_tools = ["search_restaurants"]
-  slots = {"city": "Delhi", "party_size": 4, "date": "2026-02-10", "time": "19:00"}
-  missing_slots = []
-
-User: "Italian restaurants in Delhi for 4 people on Feb 10 at 7pm"
-Result:
-  intent = "search_restaurants"
-  recommended_tools = ["search_restaurants"]
-  slots = {"city": "Delhi", "party_size": 4, "date": "2026-02-10", "time": "19:00", "cuisine": "Italian"}
-  missing_slots = []
-
-User: "book a table at restaurant ID 5 for 4 people at 8pm on 2026-02-10, name is John, phone 9876543210"
-Result:
-  recommended_tools = ["book_table"]
-  slots = {"restaurant_id": 5, "party_size": 4, "time": "20:00", "date": "2026-02-10", "customer_name": "John", "phone": "9876543210"}
-
-User conversation (after seeing search results showing Toit with id=1): "book Toit for 4 people tomorrow at 8pm, John, 9876543210"
-Result:
-  recommended_tools = ["book_table"]
-  slots = {"restaurant_id": 1, "party_size": 4, "time": "20:00", "date": "2026-02-10", "customer_name": "John", "phone": "9876543210"}
-  (Note: Extracted restaurant_id=1 by matching "Toit" to the search results in conversation history)
-
-Always output JSON:
+Output JSON:
 {
- "intent": "...",
- "slots": {...},
- "recommended_tools": [],
- "missing_slots": [...]
+  "intent": "...",
+  "slots": {...},
+  "recommended_tools": [...],
+  "missing_slots": [...]
 }
 """
 
@@ -243,6 +154,159 @@ def detect_tool_call(text: str) -> Dict[str, Any]:
         return None
 
 
+def _build_step_instruction(plan: Dict[str, Any]) -> str:
+    """
+    Build step-by-step instruction for current conversation state.
+    Guides LLM on exactly what to do next.
+    """
+    intent = plan.get("intent", "")
+    slots = plan.get("slots", {})
+    missing_slots = plan.get("missing_slots", [])
+    recommended_tools = plan.get("recommended_tools", [])
+    
+    # Search restaurants flow
+    if intent == "search_restaurants":
+        city = slots.get("city")
+        party_size = slots.get("party_size")
+        date = slots.get("date")
+        time = slots.get("time")
+        cuisine = slots.get("cuisine")
+        
+        # All required info collected → call tool
+        if city and party_size and date and time:
+            tool_args = {"city": city, "party_size": party_size}
+            if cuisine:
+                tool_args["cuisine"] = cuisine
+            
+            return f"""
+Current Step: Ready to search restaurants.
+
+Collected Info:
+- City: {city}
+- Party Size: {party_size} people
+- Date: {date}
+- Time: {time}
+{f'- Cuisine: {cuisine}' if cuisine else ''}
+
+YOUR ACTION: Output ONLY this JSON:
+TOOL: search_restaurants
+ARGS: {json.dumps(tool_args)}
+"""
+        
+        # Missing city
+        if not city:
+            return """
+Current Step: User wants to search restaurants but hasn't mentioned the city.
+
+YOUR ACTION: Ask:
+"Which city would you like to dine in?"
+
+DO NOT call any tool.
+"""
+        
+        # Missing party_size
+        if not party_size:
+            return f"""
+Current Step: User wants restaurants in {city} but hasn't mentioned party size.
+
+YOUR ACTION: Ask:
+"How many people will be dining?"
+
+DO NOT call any tool.
+"""
+        
+        # Missing date or time
+        if not date or not time:
+            return f"""
+Current Step: User wants restaurants in {city} for {party_size} people, but hasn't provided date/time.
+
+YOUR ACTION: Ask:
+"What date and time would you like to dine? (e.g., Feb 10 at 7pm)"
+
+DO NOT call any tool.
+"""
+    
+    # Booking flow
+    if intent == "book_table":
+        restaurant_id = slots.get("restaurant_id")
+        customer_name = slots.get("customer_name")
+        phone = slots.get("phone")
+        date = slots.get("date")
+        time = slots.get("time")
+        party_size = slots.get("party_size")
+        
+        # All info collected → call tool
+        if all([restaurant_id, customer_name, phone, date, time, party_size]):
+            tool_args = {
+                "restaurant_id": restaurant_id,
+                "customer_name": customer_name,
+                "phone": phone,
+                "date": date,
+                "time": time,
+                "party_size": party_size
+            }
+            
+            return f"""
+Current Step: Ready to book table.
+
+YOUR ACTION: Output ONLY this JSON:
+TOOL: book_table
+ARGS: {json.dumps(tool_args)}
+"""
+        
+        # Missing restaurant - ask for it
+        if not restaurant_id:
+            return """
+Current Step: User wants to book but hasn't selected a restaurant yet.
+
+YOUR ACTION: Ask:
+"Which restaurant would you like to book? (Please tell me the restaurant name)"
+
+DO NOT call any tool.
+"""
+        
+        # Have restaurant but missing customer name - ask for name first
+        if restaurant_id and not customer_name:
+            return """
+Current Step: User selected a restaurant. Now need customer name.
+
+YOUR ACTION: Ask:
+"Great! What's your name for the reservation?"
+
+DO NOT call any tool.
+"""
+        
+        # Have restaurant and name but missing phone - ask for phone
+        if restaurant_id and customer_name and not phone:
+            return f"""
+Current Step: User selected restaurant and provided name ({customer_name}). Now need phone number.
+
+YOUR ACTION: Ask:
+"What's your phone number?"
+
+DO NOT call any tool.
+"""
+        
+        # Have all personal details but missing date/time
+        if restaurant_id and customer_name and phone and (not date or not time):
+            return """
+Current Step: Have restaurant and customer details, but need date/time confirmation.
+
+YOUR ACTION: Ask:
+"What date and time would you like to book? (We already have {date} at {time} from earlier - confirm or change)"
+
+DO NOT call any tool.
+"""
+    
+    # Default: general conversation
+    return """
+Current Step: General conversation.
+
+YOUR ACTION: Respond naturally and help the user get started.
+Ask: "Hi! I can help you find and book restaurants. Which city would you like to dine in?"
+"""
+
+
 # =====================================================
 # MAIN AGENT LOGIC
 # =====================================================
@@ -263,23 +327,20 @@ def run_agent(client: LLMClient, messages: List[Dict[str, Any]]) -> Dict[str, An
     # 1. PLANNER - Extract intent and slots
     plan = _generate_plan(client, messages)
 
-    plan_json = json.dumps(
-        {
-            "intent": plan.get("intent"),
-            "slots": plan.get("slots"),
-            "recommended_tools": plan.get("recommended_tools"),
-            "missing_slots": plan.get("missing_slots", []),
-        }
-    )
+    # 2. BUILD STEP-SPECIFIC INSTRUCTION
+    step_instruction = _build_step_instruction(plan)
+    
+    print(f"\n📋 STEP INSTRUCTION:\n{step_instruction}\n")
 
     orchestrator_messages = [
         {"role": "system", "content": SYSTEM_PROMPT},
-        {"role": "system", "content": f"Planner directive: {plan_json}"},
+        {"role": "system", "content": step_instruction},
     ] + messages
 
-    # 2. EXECUTOR - Generate response (may include tool call)
+    # 3. EXECUTOR - Generate response (may include tool call)
     try:
         assistant_text = llm_chat(client, orchestrator_messages, max_tokens=1024)
+        print(f"\n🤖 LLM Response:\n{assistant_text}\n")
     except Exception as e:
         return {"content": f"API Error: {e}", "plan": plan, "used_tools": []}
 
@@ -344,43 +405,41 @@ def run_agent(client: LLMClient, messages: List[Dict[str, Any]]) -> Dict[str, An
     )
 
     # 4. FINAL ANSWER - Generate response after tool execution
-    # Add strict instruction to use ONLY tool results
-    orchestrator_messages.append(
-        {
-            "role": "system",
-            "content": f"""CRITICAL INSTRUCTION:
-The tool has returned this EXACT data in JSON format:
-{tool_output}
-
-YOU MUST:
-1. Parse this JSON data
-2. Show ONLY the restaurants listed in the "restaurants" array above
-3. Format each restaurant nicely for the user
-4. NEVER add any restaurant names not in this JSON
-5. If JSON shows 0 results, say no restaurants found
-
-DO NOT use your general knowledge. ONLY use the data above.""",
-        }
-    )
-
     try:
-        final_answer = llm_chat(client, orchestrator_messages, max_tokens=1024)
-    except:
-        # Fallback: manually format the tool output
-        try:
-            data = json.loads(tool_output)
-            if tool_name == "search_restaurants":
-                restaurants = data.get("restaurants", [])
-                if restaurants:
-                    final_answer = f"Found {data['total']} restaurants:\n\n"
-                    for r in restaurants:
-                        final_answer += f"• **{r['name']}** - {r['area']} (⭐ {r['rating']}, ₹{r['price_per_person']}/person)\n"
-                else:
-                    final_answer = "No restaurants found matching your criteria."
+        tool_data = json.loads(tool_output)
+        
+        # For search_restaurants, format results directly from JSON
+        if tool_name == "search_restaurants":
+            if "error" in tool_data:
+                final_answer = tool_data["error"]
+            elif tool_data.get("total", 0) == 0:
+                final_answer = "I couldn't find any restaurants matching your criteria. Try adjusting your preferences."
             else:
-                final_answer = data.get("message", tool_output)
-        except:
-            final_answer = f"Executed tool `{tool_name}`. Result: {tool_output}"
+                # Format the EXACT restaurants from the tool results
+                restaurants = tool_data.get("restaurants", [])
+                final_answer = f"I found {tool_data['total']} restaurants for you:\n\n"
+                
+                for i, r in enumerate(restaurants, 1):
+                    cuisines = ", ".join(r.get("cuisine", []))
+                    final_answer += f"{i}. **{r['name']}** - {r['area']}\n"
+                    final_answer += f"   📍 {r['city']} | 🍽️ {cuisines}\n"
+                    final_answer += f"   ⭐ {r['rating']}/5 | 💰 ₹{r['price_per_person']}/person ({r['price_range']})\n\n"
+                
+                # COMPULSORY: Ask for booking details
+                final_answer += "Which restaurant would you like to book? (Please tell me the restaurant name)"
+        
+        # For bookings, use the formatted message from tool
+        elif tool_name == "book_table":
+            final_answer = tool_data.get("message", tool_output)
+        
+        else:
+            # Fallback for other tools
+            final_answer = tool_output
+            
+    except Exception as e:
+        # If parsing fails, use raw output
+        logger.warning(f"Failed to parse tool output: {e}")
+        final_answer = f"Executed {tool_name}. Result: {tool_output}"
 
     return {"content": final_answer, "plan": plan, "used_tools": [tool_name]}
 
